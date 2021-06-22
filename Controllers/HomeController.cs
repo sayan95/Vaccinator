@@ -11,6 +11,9 @@ namespace Vaccinator.Controllers
         /**
          *  returns landing page of the application
          */
+        [HttpGet]
+        [Route]
+        [Route("home", Name = "home")]
         public ViewResult Index()
         {
             ViewBag.Page = "Home";
@@ -20,6 +23,8 @@ namespace Vaccinator.Controllers
         /**
          *  returns an about page 
          */
+        [HttpGet]
+        [Route("about", Name = "about")]
         public ViewResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -30,6 +35,8 @@ namespace Vaccinator.Controllers
         /**
          *  returns a contact details page
          */
+        [HttpGet]
+        [Route("contact", Name = "contact")]
         public ViewResult Contact()
         {
             ViewBag.Message = "Your contact page.";

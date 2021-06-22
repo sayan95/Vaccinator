@@ -2,7 +2,7 @@
 <div class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <!-- Nav brand -->
-        <a class="navbar-brand" href="#">Vaccinator</a>
+        <a class="navbar-brand" href="@Url.RouteUrl("home")">Vaccinator</a>
         <!-- Navbar collapse control -->
         <button class="navbar-toggler" type="button" 
             data-toggle="collapse" data-target="#navbarSupportedContent" 
@@ -16,16 +16,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto"> 
                 <li class="nav-item @(ViewBag.Page == "Home" ? "active": "")">
-                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link"})
+                    <a href="@Url.RouteUrl("home")" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item @(ViewBag.Page == "About" ? "active": "")">
-                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                    <a href="@Url.RouteUrl("about")" class="nav-link">About</a>
                 </li>
                 <li class="nav-item @(ViewBag.Page == "Contact" ? "active": "")">
-                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                    <a href="@Url.RouteUrl("contact")" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Vaccination</a>
+                    <a href="@Url.RouteUrl("vaccination.home")" class="nav-link">Vaccination</a>
                 </li>
             </ul>
         </div>

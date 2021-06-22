@@ -13,6 +13,9 @@ namespace Vaccinator
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // MVC attribute routing enabled
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
