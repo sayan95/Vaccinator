@@ -1,6 +1,41 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "vaccination";
+    ViewBag.Heading = "Overview";
 }
 
-<h2>Index</h2>
+<!-- Vaccination overview -->
+<div class="container table-responsive">
+    <!-- Vaccination entry table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Cowin Id</th>
+                <th>Employee Name</th>
+                <th>Vaccine Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="5" class="text-center">
+                    No data available !
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
+
+<!-- Loacal stylesheet -->
+<style>
+    .table {
+        box-shadow: 0 1px 7px #D1D5DB
+    }
+
+        .table thead th {
+            border: none;
+            background: #7C3AED;
+            color: #fff;
+        }
+</style>

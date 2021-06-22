@@ -14,7 +14,7 @@
     @Html.Partial("~/Views/Shared/Navbar/_Navbar.cshtml")
 
     <!-- main content -->
-    <div class="container pt-3 pb-3">
+    <div class="container pt-3 pb-3 main-content">
         @RenderBody()
     </div>
 
@@ -26,3 +26,11 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+<!-- local stylesheet -->
+<style>
+    .main-content{
+        min-height: 80vh;
+    }
+</style>

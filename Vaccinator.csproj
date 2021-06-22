@@ -272,6 +272,8 @@
     <Content Include="Views\Shared\Footer\_Footer.cshtml" />
     <Content Include="Views\Vaccination\Index.cshtml" />
     <Content Include="Views\Vaccination\Create.cshtml" />
+    <Content Include="Views\Vaccination\Shared\_VaccinationLayout.cshtml" />
+    <Content Include="Views\Vaccination\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,6 +16,7 @@ namespace Vaccinator.Controllers
         [Route("", Name = "vaccination.home")]
         public ActionResult Index()
         {
+            ViewBag.Page = "vaccination-home"; 
             return View("Index");
         }
 
@@ -26,6 +27,7 @@ namespace Vaccinator.Controllers
         [Route("add-details", Name = "vaccination.create")]
         public ActionResult Create()
         {
+            ViewBag.Page = "vaccination-create";
             return View("Create");
         }
     }
