@@ -11,28 +11,29 @@ namespace Vaccinator.Controllers
         /**
          *  returns landing page of the application
          */
-        public ActionResult Index()
+        public ViewResult Index()
         {
+            ViewBag.Page = "Home";
             return View("Index");
         }
 
         /**
          *  returns an about page 
          */
-        public ActionResult About()
+        public ViewResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            ViewBag.Page = "About";
             return View("About");
         }
 
         /**
          *  returns a contact details page
          */
-        public ActionResult Contact()
+        public ViewResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            ViewBag.Page = "Contact";
             return View("Contact");
         }
     }

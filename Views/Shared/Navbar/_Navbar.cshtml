@@ -1,0 +1,67 @@
+﻿<!-- Navbar component partial view -->
+<div class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <!-- Nav brand -->
+        <a class="navbar-brand" href="#">Vaccinator</a>
+        <!-- Navbar collapse control -->
+        <button class="navbar-toggler" type="button" 
+            data-toggle="collapse" data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" 
+            aria-label="Toggle navigation"
+        >
+            <i class="las la-bars"></i>
+        </button>
+           
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto"> 
+                <li class="nav-item @(ViewBag.Page == "Home" ? "active": "")">
+                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link"})
+                </li>
+                <li class="nav-item @(ViewBag.Page == "About" ? "active": "")">
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @(ViewBag.Page == "Contact" ? "active": "")">
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Vaccination</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Local stylesheet -->
+<style>
+    .navbar {
+        background: #F3F4F6;
+    }
+    .navbar-brand {
+        font-family: 'Oswald', sans-serif;
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: #6D28D9!important;
+    }
+    .navbar-toggler {
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display:flex;
+        justify-content:center;
+        align-items: center;
+    }
+    i.las.la-bars{
+        font-size:16px;
+    }
+    .navbar-nav .nav-ite, .nav-link{
+        font-weight: 500;
+        transition: all .3s;
+    }
+    .navbar-nav .nav-ite, .nav-link:hover {
+        color: #6D28D9!important
+    }
+</style>
