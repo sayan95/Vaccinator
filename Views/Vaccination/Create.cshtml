@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Vaccinator.ViewModels.VaccinationFormViewModel
+@{
     ViewBag.Title = "Create";
     ViewBag.Heading = "Add New Details";
 }
@@ -7,104 +8,132 @@
 <div class="container p-3">
     <div class="card">
         <div class="card-body">
-            <!-- Entry form -->
-            @using (Html.BeginForm("", "", FormMethod.Post))
-            {
-                <!-- Employee name-->
-                <div class="form-group row mb-4">
-                    <label for="Name" class="col-sm-4 col-form-label font-weight-bold">
-                        Employee's Name
-                        <span class="text-danger h6">*</span>
-                    </label>
-                    <div class="col-sm-1">:</div>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" placeholder="Enter your name">
-                    </div>
-                </div>
-
-                <!-- Employee age-->
-                <div class="form-group row mb-4">
-                    <label for="Age" class="col-sm-4 col-form-label font-weight-bold">
-                        Employee's Age
-                        <span class="text-danger h6">*</span>
-                    </label>
-                    <div class="col-sm-1">:</div>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" placeholder="Enter your age">
-                    </div>
-                </div>
-            
-                <!-- Employee gender -->
-                <div class="form-group row mb-4">
-                    <label class="col-form-label col-sm-4 font-weight-bold">
-                        Gender
-                        <span class="text-danger h6">*</span>
-                    </label>
-                    <div class="col-sm-1">:</div>
-                    <div class="col-sm-7">
-                        <input type="radio" name="gender" value="male"/><span class="ml-1 mr-2">Male</span>
-                        <input type="radio" name="gender" value="female"/><span class="ml-1">Female</span>
-                    </div>
-                </div>
-
-                <!-- Vaccine type -->
-                <div class="from-group row mb-4 ">
-                    <label class="col-form-label col-sm-4 font-weight-bold">
-                        Vaccine Manufacturer   
-                        <span class="text-danger h6">*</span>
-                    </label>
-                    <div class="col-sm-1">:</div>
-                    <div class="col-sm-7">
-                        <select name="vaccine_manufacturer" class="form-control">
-                            <option selected disabled>Select manufacturer</option>
-                            <option value="covaxin">Bharat Biotech - covaxin</option>
-                            <option value="covishield">Serum Institute Of India - covishield</option>
-                        </select>
-                    </div>
-                </div>
-             
-                <!-- Vaccine description -->
-                <div class="form-group row mb-4">
-                    <label class="col-form-label col-sm-4 font-weight-bold">
-                        Description
-                    </label>
-                    <div class="col-sm-1">:</div>
-                    <div class="col-sm-7">
-                        <textarea class="form-control" rows="3" placeholder="vaccine description .."></textarea>
-                    </div>
-                </div>
-             
-                <!--Tcs / Non TCS -->
-                <div class="form-group row mb-4">
-                    <label class="col-form-label col-sm-4 font-weight-bold">
-                        Tcs/Non-Tcs
-                        <span class="text-danger h6">*</span>
-                    </label>
-                    <div class="col-sm-1">:</div>
-                    <div class="col-sm-7">
-                        <input type="radio" name="gender" value="tcs" /><span class="ml-1 mr-2">Tcs</span>
-                        <input type="radio" name="gender" value="non_tcs" /><span class="ml-1">Non-Tcs</span>
-                    </div>
-                </div>
-             
-                <!-- Cowin ID --> 
-                <div class="form-group row mb-5">
-                    <label class="col-form-label col-sm-4 font-weight-bold">
-                        Cowin ID
-                        <span class="text-danger h6">*</span>
-                    </label>
-                    <div class="col-sm-1">:</div>
-                    <div class="col-sm-7">
-                        <input type="text" name="cowin_id" class="form-control" placeholder="Enter your cowin id"/>
-                    </div>
+            <div class="container">
+                <!-- section heading -->
+                <div class="container pt-4">
+                    <h4 class="font-weight-bold">Fill Details</h4>
+                    <hr/>
                 </div>
                 
-                <!-- Button group -->
-                <div class="container d-flex align-items-center justify-content-center mt-4">
-                    <button type="button" class="submit-btn mr-3">Submit</button>
-                    <button type="button" class="clear-btn">Clear</button>
-                </div>   
-             }
+                <!-- form container -->
+                <div class="container pt-2 pb-5 px-4">
+                    <!-- Special note -->
+                    <div class="alert alert-info">
+                        <p class="h6">
+                            <b>Note : </b>
+                            All <span class="text-danger">*</span> marked fields are mandatory
+                        </p>
+                    </div>
+                    <!-- Entry form -->
+                    @using (Html.BeginForm("Save", "Vaccination", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <!-- Employee name-->
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.EmpVaccinationDetails.Name, "Employee's name", new { @class = "font-weight-bold" })
+                                <span class="text-danger h6">*</span>
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-7">
+                                @Html.TextBoxFor(m => m.EmpVaccinationDetails.Name,
+                                new { type = "text", @class = "form-control", placeholder = "Enter name" })
+
+                                @Html.ValidationMessageFor(m => m.EmpVaccinationDetails.Name)
+                            </div>
+                        </div>
+
+                        <!-- Employee age-->
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.EmpVaccinationDetails.Age, "Employee's age", new { @class = "font-weight-bold" })
+                                <span class="text-danger h6">*</span>
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-7">
+                                @Html.TextBoxFor(m => m.EmpVaccinationDetails.Age, new { type = "text", @class = "form-control", placeholder = "Enter age" })
+                                @Html.ValidationMessageFor(m => m.EmpVaccinationDetails.Age)
+                            </div>
+                        </div>
+
+                        <!-- Employee gender -->
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.EmpVaccinationDetails.Gender, "Gender", new { @class = "font-weight-bold" })
+                                <span class="text-danger h6">*</span>
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-7">
+                                @Html.RadioButtonFor(m => m.EmpVaccinationDetails.Gender, "Male")<span class="ml-1 mr-2">Male</span>
+                                @Html.RadioButtonFor(m => m.EmpVaccinationDetails.Gender, "Female")<span class="ml-1 mr-2">Female</span>
+                                <div>
+                                    @Html.ValidationMessageFor(m => m.EmpVaccinationDetails.Gender)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vaccine type -->
+                        <div class="from-group row mb-4 ">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.EmpVaccinationDetails.VaccineMfg, "Vaccine manufaturer", new { @class = "font-weight-bold" })
+                                <span class="text-danger h6">*</span>
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-7">
+                                @Html.DropDownListFor(m => m.EmpVaccinationDetails.VaccineMfg, new List<SelectListItem>() {
+                                    new SelectListItem(){ Text = "Bharat Biotech - covaxin", Value="covaxin"},
+                                    new SelectListItem(){ Text = "Serum Institute Of India - covishield", Value="covishield"},
+                                }, "Select", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.EmpVaccinationDetails.VaccineMfg)
+                            </div>
+                        </div>
+
+                        <!-- Vaccine description -->
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.EmpVaccinationDetails.VaccineDescription, "Description", new { @class = "font-weight-bold" })
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-7">
+                                @Html.TextAreaFor(m => m.EmpVaccinationDetails.VaccineDescription, new { @class = "form-control", rows = "3", placeholder = "vaccine description .." })
+                            </div>
+                        </div>
+
+                        <!--Tcs / Non TCS -->
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.EmpVaccinationDetails.VaccineLocation, "Tcs/Non-Tcs", new { @class = "font-weight-bold" })
+                                <span class="text-danger h6">*</span>
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-7">
+                                @Html.RadioButtonFor(m => m.EmpVaccinationDetails.VaccineLocation, "tcs")<span class="ml-1 mr-2">Tcs</span>
+                                @Html.RadioButtonFor(m => m.EmpVaccinationDetails.VaccineLocation, "non_tcs")<span class="ml -1 mr-2">Non-Tcs</span>
+                                <div>@Html.ValidationMessageFor(m => m.EmpVaccinationDetails.VaccineLocation)</div>
+                            </div>
+                        </div>
+
+                        <!-- Cowin ID -->
+                        <div class="form-group row mb-5">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.EmpVaccinationDetails.CowinId, "Cowin Id", new { @class = "font-weight-bold" })
+                                <span class="text-danger h6">*</span>
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-7">
+                                @Html.TextBoxFor(m => m.EmpVaccinationDetails.CowinId, new { type = "text", @class = "form-control", placeholder = "Enter cowin id" })
+                                @Html.ValidationMessageFor(m => m.EmpVaccinationDetails.CowinId)
+                            </div>
+                        </div>
+
+                        <!-- Button group -->
+                        <div class="container d-flex align-items-center justify-content-center mt-4">
+                            <button type="submit" class="submit-btn mr-3">Submit</button>
+                            <button type="button" class="clear-btn">Clear</button>
+                        </div>
+                    }
+                </div>    
+            </div>
         </div>
     </div>
 </div>
@@ -112,11 +141,15 @@
 
 <!-- Local stylesheet -->
 <style>
-    .card{
+    .card {
         border: none;
     }
-    .card-body{
-        padding: 35px 40px;
+    .card-body {
+        padding: 10px 50px;
+    }
+    .card-body > .container{
+        
+        box-shadow: 0 1px 10px #ededed;
     }
     .submit-btn, .clear-btn {
         border: none;
