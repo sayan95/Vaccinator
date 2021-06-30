@@ -12,22 +12,35 @@
                 <!-- section heading -->
                 <div class="container pt-4">
                     <h4 class="font-weight-bold">Fill Details</h4>
-                    <hr/>
+                    <hr />
                 </div>
-                
+
                 <!-- form container -->
                 <div class="container pt-2 pb-5 px-4">
                     <!-- Special note -->
-                    <div class="alert alert-info">
+                    <div class="alert @(Model.Message != null ? "alert-success" : "alert-primary")">
+                        @if (Model.Message != null)
+                        {
                         <p class="h6">
-                            <b>Note : </b>
-                            All <span class="text-danger">*</span> marked fields are mandatory
+                            <span><b>Success: </b></span>
+                            @Model.Message
                         </p>
+                        }
+                        else
+                        {
+                            <p class="h6">
+                                <span><b>Note: </b></span>
+                                <span>All <span class="text-danger">*</span> fields are mandatory</span>
+                            </p>
+                        }
                     </div>
                     <!-- Entry form -->
                     @using (Html.BeginForm("Save", "Vaccination", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(m => m.EmpVaccinationDetails.Id)
+
                         <!-- Employee name-->
                         <div class="form-group row mb-4">
                             <div class="col-sm-4">
@@ -129,10 +142,10 @@
                         <!-- Button group -->
                         <div class="container d-flex align-items-center justify-content-center mt-4">
                             <button type="submit" class="submit-btn mr-3">Submit</button>
-                            <button type="button" class="clear-btn">Clear</button>
+                            <button type="reset" class="clear-btn">Clear</button>
                         </div>
                     }
-                </div>    
+                </div>
             </div>
         </div>
     </div>
@@ -144,13 +157,15 @@
     .card {
         border: none;
     }
+
     .card-body {
         padding: 10px 50px;
     }
-    .card-body > .container{
-        
-        box-shadow: 0 1px 10px #ededed;
-    }
+
+        .card-body > .container {
+            box-shadow: 0 1px 10px #ededed;
+        }
+
     .submit-btn, .clear-btn {
         border: none;
         font-family: 'Quicksand', sans-serif;
@@ -159,31 +174,35 @@
         box-shadow: 3px 3px 3px #D1D5DB;
         transition: all .3s;
     }
- 
-    .submit-btn:active,
-    .clear-btn:active {
-        box-shadow: none;
-        outline: none;
-    }
+
+        .submit-btn:active,
+        .clear-btn:active {
+            box-shadow: none;
+            outline: none;
+        }
 
     .submit-btn {
         background: #4F46E5;
         color: #fff;
     }
+
     .clear-btn {
         border: 1px solid #4F46E5;
         background: #fff;
         color: #4F46E5;
     }
-    .clear-btn:hover {
-        color: #fff;
+
+        .clear-btn:hover {
+            color: #fff;
+            background: #4F46E5;
+            text-shadow: none;
+        }
+
+    .submit-btn:hover {
         background: #4F46E5;
-        text-shadow: none;
-    }
-    .submit-btn:hover{
-        background: #4F46E5;
         color: #fff;
     }
+
     .form-control:focus {
         box-shadow: none;
         border: 1px solid #4F46E5;

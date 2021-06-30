@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Vaccinator.ViewModels.VaccinationOverviewViewModel
+@{
     ViewBag.Title = "vaccination";
     ViewBag.Heading = "Overview";
 }
@@ -6,26 +7,68 @@
 <!-- Vaccination overview -->
 <div class="container table-responsive">
     <!-- Vaccination entry table -->
+    
+    @if (Model.Message !="") { 
+        <div class="alert alert-success" style="height:50px">
+            <p style="font-size:14px">
+                <b>Success: </b>
+                <span>@Model.Message</span>
+            </p>
+        </div>
+    }
     <table class="table">
         <thead>
-            <tr>
-                <th>Sl</th>
+            <tr class="text-center">
                 <th>Cowin Id</th>
                 <th>Employee Name</th>
-                <th>Vaccine Type</th>
+                <th>Vaccine Mfg</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td colspan="5" class="text-center">
-                    No data available !
-                </td>
-            </tr>
+            @if (Model.VaccinationDetails.ToList().Count == 0)
+            {
+                <tr class="text-center"><td colspan="5">No data available</td></tr>
+            }
+            else
+            {
+                foreach (var details in Model.VaccinationDetails)
+                {
+                    <tr class="text-center">
+                        <td class="font-weight-bold">@details.CowinId</td>
+                        <td>@details.Name</td>
+                        <td>@details.VaccineMfg</td>
+                        <td>
+                            <a href="@Url.RouteUrl("vaccination.details", new { id=details.Id})" class="btn btn-sm btn-warning mr-3"><i class="las la-eye mr-2"></i>View</a>
+                            <a href="@Url.RouteUrl("vaccination.edit", new { id=details.Id})" class="btn btn-sm btn-primary mr-3"><i class="las la-pen mr-2"></i>Edit</a>
+                            <a href="#" id="delete-@details.Id" class="btn-delete btn btn-sm btn-danger mr-3"><i class="las la-trash mr-2"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>
 
+<!-- script -->
+@section VaccinationScripts{
+    <script>
+        $(document).ready(function(){
+            $(".btn-delete").click(function(){
+                proceedToDelete(this.id);
+            })
+        });
+
+        // prompts for delete record
+        function proceedToDelete(id){
+            ready = confirm("Are you sure ? ");
+            if (ready) {
+                let detailsId = id.split('-')[1];
+                window.location = '/vaccination/delete-details/' + detailsId;
+            }
+        }
+    </script>
+}
 
 <!-- Loacal stylesheet -->
 <style>

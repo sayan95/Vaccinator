@@ -1,0 +1,55 @@
+﻿@model Vaccinator.Models.EmpVaccinationDetails
+@{
+    ViewBag.Title = "view details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-5">
+    <div class="row d-flex justify-content-center">
+        <div style="width:60%">
+            <div class="card shadow-sm border-0">
+                <div class="card-header border-0">
+                    <h5>@Model.CowinId - Details
+                        <span class="float-right">
+                            <a href="@Url.RouteUrl("vaccination.home")" class="h6 text-decoration-none "><i class="las la-arrow-left mr-2"></i>Back to overview</a>
+                        </span>
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Details row  1-->
+                    <div class="row text-center text-capitalize">
+                        <div class="col-md-4">
+                            <label class="font-weight-bold">Cowin ID</label>
+                            <p>@Model.CowinId</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="font-weight-bold">Employee's Name</label>
+                            <p>@Model.Name</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="font-weight-bold">Employee's Age</label>
+                            <p>@Model.Age Yrs</p>
+                        </div>
+                    </div>
+
+                    <!-- Details row 2 -->
+                    <div class="row text-center mt-5 text-capitalize">
+                        <div class="col-md-4">
+                            <label class="font-weight-bold">Gender</label>
+                            <p>@Model.Gender</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="font-weight-bold">Vaccine Manufacturer</label>
+                            <p>@Model.VaccineMfg</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="font-weight-bold">Vaccination Location</label>
+                            <p class="text-uppercase">@Model.VaccineLocation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

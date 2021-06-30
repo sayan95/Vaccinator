@@ -2,7 +2,7 @@
 <div class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <!-- Nav brand -->
-        <a class="navbar-brand" href="@Url.RouteUrl("home")">Vaccinator</a>
+        <a class="navbar-brand" href="@Url.RouteUrl("home")">Covid-19 Insight</a>
         <!-- Navbar collapse control -->
         <button class="navbar-toggler" type="button" 
             data-toggle="collapse" data-target="#navbarSupportedContent" 
@@ -18,13 +18,7 @@
                 <li class="nav-item @(ViewBag.Page == "Home" ? "active": "")">
                     <a href="@Url.RouteUrl("home")" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item @(ViewBag.Page == "About" ? "active": "")">
-                    <a href="@Url.RouteUrl("about")" class="nav-link">About</a>
-                </li>
-                <li class="nav-item @(ViewBag.Page == "Contact" ? "active": "")">
-                    <a href="@Url.RouteUrl("contact")" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item @(ViewBag.Page == "vaccination-home" ? "active" : "")">
+                <li class="nav-item @(ViewBag.Page == "vaccination" ? "active" : "")">
                     <a href="@Url.RouteUrl("vaccination.home")" class="nav-link">Vaccination</a>
                 </li>
             </ul>
@@ -42,7 +36,7 @@
     .navbar-brand {
         font-family: 'Oswald', sans-serif;
         font-size: 22px;
-        font-weight: 500;
+        font-weight: 600;
         letter-spacing: 2px;
         color: #6D28D9!important;
     }

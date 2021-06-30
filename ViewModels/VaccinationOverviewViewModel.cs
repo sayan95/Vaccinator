@@ -6,9 +6,9 @@ using Vaccinator.Models;
 
 namespace Vaccinator.ViewModels
 {
-    public class VaccinationFormViewModel
+    public class VaccinationOverviewViewModel
     {
-        public EmpVaccinationDetails EmpVaccinationDetails { get; set; }
+        public IEnumerable<EmpVaccinationDetails> VaccinationDetails { get; set; }
         public string Message { get; set; }
     }
 }

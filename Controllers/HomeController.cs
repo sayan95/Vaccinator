@@ -19,29 +19,5 @@ namespace Vaccinator.Controllers
             ViewBag.Page = "Home";
             return View("Index");
         }
-
-        /**
-         *  returns an about page 
-         */
-        [HttpGet]
-        [Route("about", Name = "about")]
-        public ViewResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            ViewBag.Page = "About";
-            return View("About");
-        }
-
-        /**
-         *  returns a contact details page
-         */
-        [HttpGet]
-        [Route("contact", Name = "contact")]
-        public ViewResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            ViewBag.Page = "Contact";
-            return View("Contact");
-        }
     }
 }
